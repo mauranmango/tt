@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Hello {{ user.username }}</h1>
-<ul>
-    {% for post in posts %}
-        {% if posts.index(post) < 2 %}
-            <li>{{ post.author.username }} said: <b>"{{ post.body }}"</b></li>
-        {% endif %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
     {% endfor %}
-</ul>
+    <h1>Hello {{ user.username }}</h1>
+    <ul>
+        {% for post in posts %}
+            {% if posts.index(post) < 2 %}
+                <li>{{ post.author.username }} said: <b>"{{ post.body }}"</b></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 {% endblock %}

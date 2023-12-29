@@ -5,12 +5,11 @@
             {{ message }}
         </div>
     {% endfor %}
-    <h1>Hello {{ user.username }}</h1>
+    <h1>Hello {{ current_user.username }}</h1>
     <ul>
         {% for post in posts %}
-            {% if posts.index(post) < 2 %}
-                <li>{{ post.author.username }} said: <b>"{{ post.body }}"</b></li>
-            {% endif %}
+            <strong><h3>{{ post.author.username }}</h3></strong>
+            {{ post.body }} - {{ post.timestamp }}
         {% endfor %}
     </ul>
 {% endblock %}

@@ -10,18 +10,8 @@ from app.models import User, Post
 @app.route('/index')
 @login_required
 def index():
-    user = {'username': "ben"}
-    posts = [
-        {
-            'author': {'username': 'Ben'},
-            'body': 'sunny day'
-        },
-        {
-            'author': {'username': 'Miguel'},
-            'body': 'flask mega tutorial'
-        }
-    ]
-    return render_template('index.html', title='Index', user=user, posts=posts)
+    posts = Post.query.filter_by(user_id=current_user.id).all()
+    return render_template('index.html', title='Home', posts=posts)
 
 
 @app.route('/login', methods=['GET', 'POST'])

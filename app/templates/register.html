@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-info" role="alert">
-            {{ message }}
-        </div>
-    {% endfor %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
+    <h1>Register</h1>
+    <form action="" method="post">
+        <p>
+            {{ form.hidden_tag() }}
+        </p>
         <p>
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}<br>
             {% for error in form.username.errors %}
+                <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
                 <span style="color: red">[{{ error }}]</span>
             {% endfor %}
         </p>
@@ -23,13 +27,17 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.remember_me() }} {{ form.remember_me.label }}
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+                <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.submit() }}<br>
         </p>
         <p>
-            New User?<a href="{{ url_for('register') }}"> Click here to register!</a>
+            Existing User?<a href="{{ url_for('login') }}"> Click here to sign in!</a>
         </p>
     </form>
 {% endblock %}

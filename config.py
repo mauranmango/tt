@@ -6,4 +6,4 @@ class Config(object):
     DEBUG = os.environ.get('DEBUG') or True
     SQLALCHEMY_DATABASE_URI = "postgresql://postgres:8887@localhost:5432/tinyblog"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    PERMANENT_SESSION_LIFETIME = 30
+    PERMANENT_SESSION_LIFETIME = 130

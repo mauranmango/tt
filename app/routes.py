@@ -10,8 +10,9 @@ from app.models import User, Post
 @app.route('/index')
 @login_required
 def index():
+    user = current_user
     posts = Post.query.filter_by(user_id=current_user.id).all()
-    return render_template('index.html', title='Home', posts=posts)
+    return render_template('index.html', title='Home', posts=posts, user=user)
 
 
 @app.route('/login', methods=['GET', 'POST'])

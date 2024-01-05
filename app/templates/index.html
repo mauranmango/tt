@@ -8,8 +8,9 @@
     <h1>Hello {{ current_user.username }}</h1>
     <ul>
         {% for post in posts %}
-            <strong><h3>{{ post.author.username }}</h3></strong>
-            {{ post.body }} - {{ post.timestamp }}
+{#            <strong><h3>{{ post.author.username }}</h3></strong>#}
+{#            {{ post.body }} - {{ post.timestamp }}#}
+            {% include '_post.html' %}
         {% endfor %}
     </ul>
 {% endblock %}

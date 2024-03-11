@@ -24,14 +24,43 @@
                     </p>
                 {% endif %}
 
+                <p>{{ user.followers.count() }} followers {{ user.followed.count() }} following</p>
                 {% if user == current_user %}
-                    <p><a href="{{ url_for('edit_profile') }}">Edit Profile: </a></p>
+                    <p><a href="{{ url_for('edit_profile') }}">Edit Profile </a></p>
+
+                {% elif not current_user.is_following(user) %}
+                    <form action="{{ url_for('follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Follow') }}
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Unollow') }}
+                    </form>
                 {% endif %}
             </td>
         </tr>
     </table>
     <hr>
-    {% for post in posts %}
+    {% for post in posts.items %}
         {% include '_post.html' %}
     {% endfor %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                {% if prev_url %}
+                    <a class="page-link" href="{{ prev_url }}" tabindex="-1">Previous</a>
+                {% else %}
+                    <a class="page-link disabled" href="{{ prev_url }}">Previous</a>
+                {% endif %}
+            </li>
+            {% if next_url %}
+                <a class="page-link" href="{{ next_url }}">Next</a>
+            {% else %}
+                <a class="page-link disabled" href="{{ next_url }}">Next</a>
+            {% endif %}
+            </li>
+        </ul>
+    </nav>
 {% endblock %}

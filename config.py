@@ -7,11 +7,13 @@ class Config(object):
     DEBUG = os.environ.get('DEBUG') or True
     SQLALCHEMY_DATABASE_URI = "postgresql://postgres:8887@localhost:5432/tinyblog"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    PERMANENT_SESSION_LIFETIME = 130
+    PERMANENT_SESSION_LIFETIME = 1300
 
-    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
-    MAIL_PORT = os.environ.get('MAIL_PORT') or 587
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or 1
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'websitetestwebsitetest@gmail.com'
+    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['websitetestwebsitetest@gmail.com', 'mauran.mango@gmail.com']
+    ADMINS = ['websitetestwebsitetest@gmail.com']
+    POST_PER_PAGE = 3

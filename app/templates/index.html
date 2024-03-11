@@ -6,11 +6,45 @@
         </div>
     {% endfor %}
     <h1>Hello {{ current_user.username }}</h1>
+    {% if form %}
+        <form action="" method="post">
+            <p>
+                {{ form.hidden_tag() }}
+                {{ form.post.label }}<br>
+                {{ form.post(cols=32, rows=4) }}<br>
+                {% for error in form.post.errors %}
+                    <span style="color: red">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+    {% endif %}
+
     <ul>
         {% for post in posts %}
-{#            <strong><h3>{{ post.author.username }}</h3></strong>#}
-{#            {{ post.body }} - {{ post.timestamp }}#}
+            {#            <strong><h3>{{ post.author.username }}</h3></strong>#}
+            {#            {{ post.body }} - {{ post.timestamp }}#}
             {% include '_post.html' %}
         {% endfor %}
+        </br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    {% if prev_url %}
+                        <a class="page-link" href="{{ prev_url }}" tabindex="-1">Previous</a>
+                    {% else %}
+                        <a class="page-link disabled" href="{{ prev_url }}">Previous</a>
+                    {% endif %}
+                </li>
+                {% if next_url %}
+                    <a class="page-link" href="{{ next_url }}">Next</a>
+                {% else %}
+                    <a class="page-link disabled" href="{{ next_url }}">Next</a>
+                {% endif %}
+                </li>
+            </ul>
+        </nav>
     </ul>
 {% endblock %}

@@ -60,9 +60,9 @@ class User(UserMixin, db.Model):
     def followed_posts(self):
         """
         The followed_posts method of the User class returns a SQLAlchemy
-query object that is configured to grab the posts the user is interested
-in from the database. Calling all() on this query triggers its
-execution, with the return value being a list with all the results.
+        query object that is configured to grab the posts the user is interested
+        in from the database. Calling all() on this query triggers its
+        execution, with the return value being a list with all the results.
         :return:
         """
         followed = Post.query.join(followers, (followers.c.followed_id == Post.user_id)).filter(

@@ -9,11 +9,11 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PERMANENT_SESSION_LIFETIME = 1300
 
-    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_SERVER = 'smtp.mail.yahoo.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_USERNAME = 'mauran.mango@yahoo.com'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['websitetestwebsitetest@gmail.com']
+    ADMINS = ['mauran.mango@yahoo.com']
     POST_PER_PAGE = 3
